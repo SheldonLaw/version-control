@@ -1,0 +1,14 @@
+{
+  "name": "version-control",
+  "version": "1.0.0",
+  "description": "A very tiny npm module to manipulate version control system including Git & SVN.",
+  "main": "version-control.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "author": "Sheldon Law",
+  "license": "MIT"
+}
