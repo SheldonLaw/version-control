@@ -21,7 +21,12 @@ VersionControl.commit(codePath, commitMsg);
 
 // version revert
 const version = 'THE_VERSION_YOU_WANT_TO_GO_BACK';
-VersionControl.revert(codePath, version);
+const message = 'revert message'; // for svn only.
+VersionControl.revert(codePath, version, message);
+
+## Document
+
+> todo
 
 ## TODO
 1. Auto release npm module with travis-ci.

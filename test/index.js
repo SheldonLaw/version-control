@@ -63,7 +63,7 @@ const test = async () => {
     // {
     //   name: 'versionControl.revert',
     //   prepare: () => {},
-    //   run: () => versionControl.revert(codePath, 'revert', 'r206678'),
+    //   run: () => versionControl.revert(codePath, 'r206678', 'revert'),
     //   // @TODO: 完成校验步骤，1. 提交两次，回滚一次，看内容 2. 提交三次，回滚到指定版本
     //   verify: data => !data.error && Object.prototype.hasOwnProperty.call(data, 'msg'),
     // },

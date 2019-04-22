@@ -146,7 +146,7 @@ class SVN {
     return logData;
   }
 
-  static async revert(codePath, commitMsg, version) {
+  static async revert(codePath, version, commitMsg) {
     // @NOTE 回滚 = 先回退，再commit
     // https://stackoverflow.com/questions/13330011/how-do-i-revert-an-svn-commit
     const logs = await this.log(codePath);
