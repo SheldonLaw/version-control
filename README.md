@@ -23,10 +23,11 @@ VersionControl.commit(codePath, commitMsg);
 const version = 'THE_VERSION_YOU_WANT_TO_GO_BACK';
 const message = 'revert message'; // for svn only.
 VersionControl.revert(codePath, version, message);
+```
 
 ## Document
 
-todo
+> todo
 
 ## TODO
 1. Auto release npm module with travis-ci.
@@ -36,5 +37,3 @@ todo
 ## Dev Note
 1. 中文处理问题：`process.env.LANG = 'zh_CN.UTF-8'`;
 2. svn add all takes to long: `svn add --force * --auto-props --parents --depth infinity -q` => add one by one;
-
-```
