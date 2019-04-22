@@ -26,11 +26,11 @@ VersionControl.revert(codePath, version, message);
 
 ## Document
 
-> todo
+todo
 
 ## TODO
 1. Auto release npm module with travis-ci.
-2. Git support.
+2. Git support. - finished on 2019-04-22
 3. Windows support.
 
 ## Dev Note
