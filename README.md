@@ -37,3 +37,5 @@ VersionControl.revert(codePath, version, message);
 ## Dev Note
 1. 中文处理问题：`process.env.LANG = 'zh_CN.UTF-8'`;
 2. svn add all takes to long: `svn add --force * --auto-props --parents --depth infinity -q` => add one by one;
+
+[More develop detail can be finded here.](https://blog.csdn.net/code_for_free/article/details/88929160)
