@@ -72,6 +72,15 @@ class SVN {
     await exec(command, codePath)
       .then((data) => {
         result.msg = data;
+      })
+      .catch(async (error) => {
+        const { message } = error;
+        // 处理svn upgrade报错，通过报错找到真正的svn root
+        if (message.indexOf("Can't upgrade") !== -1) {
+          const SVN_ROOT_REG = /the root is '(.*)'/;
+          const svnRoot = SVN_ROOT_REG.exec(message)['1'];
+          await this.upgrade(svnRoot);
+        }
       });
     return result;
   }
