@@ -6,14 +6,14 @@ const gitPath = '/Users/sheldonluo/workspace/test/git';
 const svnPath = '/Users/sheldonluo/workspace/slicer';
 
 async function testIsGit() {
-  const notGit = await VersionControl.isGit(normalPath);
+  const notGit = await VersionControl.isGit(svnPath);
   const isGit = await VersionControl.isGit(gitPath);
   if (notGit || !isGit) throw new Error('isGit testFailed!');
   console.log('isGit passed.');
 }
 
 async function testIsSvn() {
-  const notSvn = await VersionControl.isSvn(normalPath);
+  const notSvn = await VersionControl.isSvn(gitPath);
   const isSvn = await VersionControl.isSvn(svnPath);
   if (notSvn || !isSvn) throw new Error('isSvn testFailed!');
   console.log('isSvn passed.');
@@ -45,7 +45,7 @@ async function testGit() {
 async function test() {
   await testIsGit();
   await testIsSvn();
-  await testGit();
+  // await testGit();
 }
 
 test();

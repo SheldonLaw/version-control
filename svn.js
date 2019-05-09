@@ -59,9 +59,8 @@ class SVN {
           const SVN_ROOT_REG = /The working copy at '(.*)'/;
           const svnRoot = SVN_ROOT_REG.exec(message)['1'];
           await this.upgrade(svnRoot);
-          return this.status(codePath);
+          statusData = await this.status(codePath);
         }
-        return statusData;
       });
     return statusData;
   }

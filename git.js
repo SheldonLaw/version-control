@@ -4,8 +4,8 @@ const exec = require('./exec');
 
 const GIT_TYPE_MAP = {
   '??': 'add',
-  'D': 'delete',
-  'M': 'update',
+  D: 'delete',
+  M: 'update',
 };
 const parseStatus = (data) => {
   const result = [];
@@ -24,7 +24,6 @@ const parseStatus = (data) => {
 const LOG_SEPERATOR = '<seperator>';
 const parseLog = (data) => {
   const result = [];
-  let regResult;
   data.split('\n').forEach((commit) => {
     const [version, author, date, message] = commit.split(LOG_SEPERATOR);
     result.push({
@@ -45,6 +44,9 @@ class Git {
     await exec(command, codePath)
       .then((data) => {
         statusData = parseStatus(data);
+      })
+      .catch(() => {
+        statusData = false;
       });
     return statusData;
   }

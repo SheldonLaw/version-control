@@ -43,33 +43,28 @@ class VersionControl {
     switch (true) {
       case this.type === 'git' || await VersionControl.isGit(codePath):
         return require('./git');
-        break;
       case this.type === 'svn' || await VersionControl.isSvn(codePath):
         return require('./svn');
-        break;
       default:
-        throw new Error(`Can't detect git or svn.`);
+        throw new Error(`Can't detect git or svn in ${codePath}`);
     }
   }
 
-  // from https://stackoverflow.com/questions/2180270/check-if-current-directory-is-a-git-repository
   static async isGit(codePath) {
-    let isGit = false;
-    await exec('([ -d .git ] && echo .git) || git rev-parse --git-dir 2> /dev/null', codePath)
-      .then((data) => {
-        isGit = true;
-      })
-      .catch(() => {});
-    return isGit;
+    const result = await require('./git').status(codePath);
+    return result;
   }
 
   static async isSvn(codePath) {
     let isSvn = false;
     await exec('svn info', codePath)
-      .then((data) => {
+      .then(() => {
         isSvn = true;
       })
-      .catch(() => {});
+      .catch((error) => {
+        const { message } = error;
+        if (message.indexOf('svn upgrade') !== -1) isSvn = true;
+      });
     return isSvn;
   }
 }
