@@ -52,7 +52,7 @@ class VersionControl {
 
   static async isGit(codePath) {
     const result = await require('./git').status(codePath);
-    return result;
+    return Boolean(result);
   }
 
   static async isSvn(codePath) {
