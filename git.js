@@ -1,5 +1,4 @@
-const exec = require('./exec');
-
+const { exec, execCommand } = require('./util');
 // @BUG 新的没有改动可提交的时候会报错？
 
 const GIT_TYPE_MAP = {
@@ -69,30 +68,17 @@ class Git {
 
   static async update(codePath) {
     const command = 'git pull --rebase';
-    const result = { error: false, msg: '' };
-    await exec(command, codePath)
-      .then((data) => {
-        result.msg = data;
-      })
-      .catch((error) => {
-        result.error = true;
-        result.msg = error;
-      });
-    return result;
+    return await execCommand(command, codePath);
   }
 
   static async addAll(codePath) {
-    const result = { error: false, msg: '' };
     const command = 'git add --all';
-    await exec(command, codePath)
-      .then((data) => {
-        result.msg = data;
-      })
-      .catch((error) => {
-        result.error = true;
-        result.msg = error;
-      });
-    return result;
+    return await execCommand(command, codePath);
+  }
+
+  static async push(codePath) {
+    const command = 'git push';
+    return await execCommand(command, codePath);
   }
 
   static async commit(codePath, commitMsg) {

@@ -1,5 +1,5 @@
-const exec = require('./exec');
-
+const { exec, execCommand } = require('./util');
+``
 const SVN_TYPE_MAP = {
   '?': 'add',
   A: 'add',
@@ -86,16 +86,7 @@ class SVN {
 
   static async update(codePath) {
     const command = 'svn update';
-    const result = { error: false, msg: '' };
-    await exec(command, codePath)
-      .then((data) => {
-        result.msg = data;
-      })
-      .catch((error) => {
-        result.error = true;
-        result.msg = error;
-      });
-    return result;
+    return await execCommand(command, codePath);
   }
 
   static async addAll(codePath) {

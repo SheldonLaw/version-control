@@ -51,15 +51,17 @@ const test = async () => {
     //   run: () => versionControl.update(codePath),
     //   verify: data => !data.error && Object.prototype.hasOwnProperty.call(data, 'msg'),
     // },
-    // {
-    //   name: 'versionControl.log',
-    //   prepare: () => {},
-    //   run: () => versionControl.log(codePath),
-    //   verify: (data) => {
-    //     const [latestCommit] = data;
-    //     return latestCommit.msg === commitMsg;
-    //   },
-    // },
+    {
+      name: 'versionControl.log',
+      prepare: () => {},
+      run: () => versionControl.log(codePath),
+      verify: (data) => {
+        console.log(data);
+        return true;
+        const [latestCommit] = data;
+        return latestCommit.msg === commitMsg;
+      },
+    },
     // {
     //   name: 'versionControl.revert',
     //   prepare: () => {},

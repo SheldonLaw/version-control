@@ -1,4 +1,4 @@
-# version-control.js
+# [beta] version-control.js
 
 A super tiny npm module to manipulate version control system including Git & SVN.
 
@@ -32,7 +32,8 @@ VersionControl.revert(codePath, version, message);
 ## TODO
 1. Auto release npm module with travis-ci.
 2. Git support. - finished on 2019-04-22
-3. Windows support.
+3. Windows support. - finished on 2019-04-09
+4. Add unit test.
 
 ## Dev Note
 1. 中文处理问题：`process.env.LANG = 'zh_CN.UTF-8'`;

@@ -45,7 +45,7 @@ async function testGit() {
 async function test() {
   await testIsGit();
   await testIsSvn();
-  // await testGit();
+  await testGit();
 }
 
 test();

@@ -10,5 +10,8 @@
     "test": "node test/index.js"
   },
   "author": "Sheldon Law",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "fs-extra": "^8.0.1"
+  }
 }

@@ -37,6 +37,12 @@ class VersionControl {
     return vcs.revert(codePath, version, commitMsg);
   }
 
+  async push(codePath) {
+    const vcs = await this.getVcs(codePath);
+    if (!vcs.push) throw new Error(`push is only avaliable for Git, your code in ${codePath} is not a git repository.`);
+    return vcs.push(codePath);
+  }
+
   // 获取实际的版本管理脚本：若有指定，则用指定的，若无，则自动检测
   // vsc = versionControlSystem
   async getVcs(codePath) {
